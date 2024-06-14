@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+![Jobs List](https://github.com/thomasnguyen244/job-board/blob/main/.idea/job-list.png?raw=true)
+
 ## Setting up the Jobs Collection in Directus 
 
 Before we can start fetching and displaying job listings, we need to define the data model that will store our job data in Directus.
