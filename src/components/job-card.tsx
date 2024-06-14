@@ -10,7 +10,7 @@ type JobCardProps = {
 
 export function JobCard(props: JobCardProps) {
   const { data, ...rest } = props;
-  const { id, title, company, location, datePosted, logo, tags, remote, salaryRange  } = data;
+  const { id, identifier, title, company, location, datePosted, logo, tags, remote, salaryRange  } = data;
 
   return (
     <Box
@@ -25,7 +25,7 @@ export function JobCard(props: JobCardProps) {
         <Stack direction={{ base: 'column', lg: 'row' }} spacing='8'>
           <Avatar size='lg' name={title} src={logo} />
           <Box>
-            <LinkOverlay as={NextLink} href={`/${id}`}>
+            <LinkOverlay as={NextLink} href={`/remote-jobs/${identifier}`}>
               <Heading size='md'>{title}</Heading>
             </LinkOverlay>
             <Text>{company}</Text>
@@ -36,7 +36,7 @@ export function JobCard(props: JobCardProps) {
               </HStack>
               <HStack spacing={1}>
                 <Icon as={MdBusiness} boxSize={4} />
-                <Text>{remote === 'true' ? 'Remote' : 'Onsite'}</Text>
+                <Text>{remote === 'true' || remote === true ? 'Remote' : 'Onsite'}</Text>
               </HStack>
               <HStack spacing={1}>
                 <Icon as={MdOutlineAttachMoney} boxSize={4} />
