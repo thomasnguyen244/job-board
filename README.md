@@ -1,6 +1,35 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Setting up the Jobs Collection in Directus 
+
+Before we can start fetching and displaying job listings, we need to define the data model that will store our job data in Directus.
+
+Log in to your Directus app and navigate to Settings > Data Model. Click the + icon to create a new collection called “jobs”.
+
+Add the following fields and save:
+
+    title (Type: String, Interface: Input)
+    identifier (Type: String, Interface: Input)
+    company (Type: String, Interface: Input)
+    website (Type: String, Interface: Input)
+    location (Type: String, Interface: Input)
+    logo (Type: UUID, Interface: Image)
+    tags (Type: JSON, Interface: Tags)
+    remote (Type: Boolean, Interface: Toggle)
+    datePosted (Type: DateTime, Interface: DateTime)
+    salaryRange (Type: String, Interface: Input)
+    content (Type: Text, Interface: WYSIWYG)
+    note (Type: String, Interface: Input)
+
+## Adding Content to the Jobs Collection
+
+With the data model in place, we're now ready to populate our collection with some real job listings.
+
+From the Directus sidebar, navigate to "Content Module" and select the "Jobs" collection we created earlier.
+
+Go ahead and add a few sample jobs to have content to work with as we build out the frontend interface. You can always come back later to enter more postings as needed.
+
+## Building the Frontend Application - Getting Started
 
 First, run the development server:
 
