@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Before we can start fetching and displaying job listings, we need to define the data model that will store our job data in Directus.
 
-Log in to your Directus app and navigate to Settings > Data Model. Click the + icon to create a new collection called “jobs”.
+Log in to your [Directus](https://directus.io/) app and navigate to Settings > Data Model. Click the + icon to create a new collection called "jobs".
 
 Add the following fields and save:
 
