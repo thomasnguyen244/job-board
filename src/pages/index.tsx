@@ -36,9 +36,14 @@ export default function Home(props: { jobs: Job[] }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <Box p={{ base: '12', lg: '24' }}>
-          <Stack mb='8' maxW='sm'>
-            <Heading>Find Remote Jobs - Latest post about 3 hours ago</Heading>
+        <Box p={{ base: '12', lg: '24' }} pt={{ base: '5', lg: '5' }} pb={{ base: '5', lg: '5' }}>
+          <Stack spacing={6}>
+            <Heading as='h1'size='4xl' textAlign={"center"} noOfLines={1}>Work With Thomas</Heading>
+          </Stack>
+        </Box>
+        <Box p={{ base: '12', lg: '24' }} pt={{ base: '5', lg: '5' }}>
+          <Stack mb='8' direction={{ base: 'column', md: 'row' }}>
+            <Heading flex='1'>Find Remote Jobs - Latest post about 3 hours ago</Heading>
             <InputGroup w='auto'>
               <InputLeftElement color='gray.400'>
                 <FaSearch />
