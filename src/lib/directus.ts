@@ -1,4 +1,6 @@
-export type Job = {
+import { createDirectus, rest } from '@directus/sdk';
+
+export interface Job {
     id: number;
     title: string;
     company: string;
@@ -10,8 +12,12 @@ export type Job = {
     remote: boolean;
     salaryRange: string;
     note: string;
-  };
-  
-  type Schema = {
-    jobs: Job[];
-  };
+};
+
+interface Schema {
+  jobs: Job[];
+}
+
+const directus = createDirectus<Schema>(process.env.DIRECTUS_URL!).with(rest());
+
+export default directus;
