@@ -2,7 +2,7 @@ import { JobList } from '@/components/job-list';
 import { Box, Heading, Stack } from '@chakra-ui/react';
 import { readItems } from '@directus/sdk';
 import Head from 'next/head';
-import directus, { Job } from '../lib/directus';
+import directus, { Job } from '@/lib/directus';
 
 export default function Home({ jobs }: { jobs: Job[] }) {
   return (
