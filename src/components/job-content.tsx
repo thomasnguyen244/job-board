@@ -1,5 +1,5 @@
 import { Job } from '@/lib/directus';
-import { Avatar, Box, Button, HStack, Heading } from '@chakra-ui/react';
+import { LinkBox, LinkOverlay, Text, Avatar, Box, Button, HStack, Heading } from '@chakra-ui/react';
 import Link from 'next/link';
 
 type JobContentProps = {
@@ -8,7 +8,7 @@ type JobContentProps = {
 
 export function JobContent(props: JobContentProps) {
   const { data } = props;
-  const { content, logo, title, company, note } = data;
+  const { content, logo, title, company, note, website } = data;
 
   return (
     <Box px={{ base: '12', lg: '24' }}>
@@ -17,10 +17,16 @@ export function JobContent(props: JobContentProps) {
       </Button>
       <Box py='16'>
         <HStack spacing='4'>
-          <Avatar size='lg' name={title} src={logo} />
+            <LinkBox as='article'>
+                <LinkOverlay href={`${website}`} target='_BLANK' title={company}>
+                    <Avatar size='lg' name={title} src={logo} />
+                </LinkOverlay>
+            </LinkBox>
           <Heading size='lg'>{company}</Heading>
         </HStack>
-        <Box maxW='3xl' dangerouslySetInnerHTML={{ __html: note }} />
+        <HStack spacing='4'>
+            <Text maxW='3xl' py='1' pt='10' pb='10'>{note}</Text>
+        </HStack>
         <Box maxW='3xl' dangerouslySetInnerHTML={{ __html: content }} />
       </Box>
     </Box>

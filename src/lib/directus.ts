@@ -12,6 +12,8 @@ export interface Job {
     remote: boolean;
     salaryRange: string;
     note: string;
+    website: string;
+    identifier: string;
 };
 
 interface Schema {
