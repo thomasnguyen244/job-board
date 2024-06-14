@@ -1,10 +1,29 @@
 import { JobList } from '@/components/job-list';
-import { Box, Heading, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Stack,
+} from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { FaSearch } from 'react-icons/fa';
 import { readItems } from '@directus/sdk';
 import Head from 'next/head';
 import directus, { Job } from '@/lib/directus';
 
-export default function Home({ jobs }: { jobs: Job[] }) {
+export default function Home(props: { jobs: Job[] }) {
+  const { jobs } = props;
+  const router = useRouter();
+
+  const searchQuery = router.query.search?.toString();
+  const searchResult = searchQuery
+    ? jobs.filter((job) => {
+        return job.title.toLowerCase().includes(searchQuery.toLowerCase());
+      })
+    : jobs;
+
   return (
     <>
       <Head>
@@ -20,8 +39,23 @@ export default function Home({ jobs }: { jobs: Job[] }) {
         <Box p={{ base: '12', lg: '24' }}>
           <Stack mb='8' maxW='sm'>
             <Heading>Find Remote Jobs - Latest post about 3 hours ago</Heading>
+            <InputGroup w='auto'>
+              <InputLeftElement color='gray.400'>
+                <FaSearch />
+              </InputLeftElement>
+              <Input
+                placeholder='Search jobs...'
+                onChange={(event) => {
+                  const value = event.target.value;
+
+                  router.replace({
+                    query: { search: value },
+                  });
+                }}
+              />
+            </InputGroup>
           </Stack>
-          <JobList data={jobs} />
+          <JobList data={searchResult} />
         </Box>
       </main>
     </>
